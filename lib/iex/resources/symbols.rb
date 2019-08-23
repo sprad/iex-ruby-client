@@ -4,7 +4,7 @@ module IEX
       property 'symbol'
       property 'exchange'
       property 'name'
-      property 'date'
+      property 'date', transform_with: ->(v) { Date.parse(v) }
       property 'type'
       property 'iex_id', from: 'iexId'
       property 'region'
