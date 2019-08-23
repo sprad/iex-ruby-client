@@ -8,10 +8,10 @@ module IEX
       property 'week_52_high_dollar', from: 'week52high', with: ->(v) { Resource.to_dollar(amount: v, ignore_cents: false) }
       property 'week_52_low', from: 'week52low'
       property 'week_52_low_dollar', from: 'week52low', with: ->(v) { Resource.to_dollar(amount: v, ignore_cents: false) }
-      property 'week_52_change'
+      property 'week_52_change', from: 'week52change'
       property 'week_52_change_dollar', from: 'week52change', with: ->(v) { Resource.to_dollar(amount: v, ignore_cents: false) }
       property 'dividend_yield', from: 'dividendYield'
-      property 'ex_dividend_date', from: 'exDividendDate'
+      property 'ex_dividend_date', from: 'exDividendDate', transform_with: ->(v) { v.nil? ? nil : Date.parse(v) }
       property 'shares_outstanding', from: 'sharesOutstanding'
       property 'float'
       property 'ttm_eps', from: 'ttmEPS'
@@ -40,8 +40,8 @@ module IEX
       property 'max_change_percent', from: 'maxChangePercent'
       property 'day_30_change_percent', from: 'day30ChangePercent'
       property 'day_30_change_percent_s', from: 'day30ChangePercent', with: ->(v) { Resource.float_to_percentage(v) }
-      property 'next_dividend_date', from: 'nextDividendDate'
-      property 'next_earnings_date', from: 'nextEarningsDate'
+      property 'next_dividend_date', from: 'nextDividendDate', transform_with: ->(v) { v.nil? ? nil : Date.parse(v) }
+      property 'next_earnings_date', from: 'nextEarningsDate', transform_with: ->(v) { v.nil? ? nil : Date.parse(v) }
       property 'pe_ratio', from: 'peRatio'
       property 'beta'
 
