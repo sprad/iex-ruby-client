@@ -7,6 +7,7 @@ module IEX
       include Endpoints::Dividends
       include Endpoints::Earnings
       include Endpoints::Income
+      include Endpoints::IntradayPrices
       include Endpoints::KeyStats
       include Endpoints::LargestTrades
       include Endpoints::Logo
